@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- input fields -->
+    <label for="x">X = </label>
+    <input type="number" name="x" id="input1">
+
+    <label for="y">y = </label>
+    <input type="number" name="y" id="input2">
+<br>
+<br>
+
+    <!-- button -->
+    <input type="submit" value="+" id="plus">
+    <input type="submit" value="-" id="minus">
+    <input type="submit" value="/" id="divide">
+    <input type="submit" value="*" id="multiply">
+
+    <h3>Output = <span id="msg"></span></h3>
+
+    <!-- javascript -->
+    <script>
+        function main(value){
+            document.getElementById("display").value +=value;
+        }
+        function calculate(){
+            let a = document.getElementById("display").value;
+            let result;
+            try{
+                result=eval(a);
+            }
+            catch(error){
+                result ="error"
+                document.getElementById("display").style.color = "red"
+            }
+            document.getElementById("display").value=result;
+        }
+        function clearDisplay(){
+            document.getElementById("display").value="";
+        }
+        function del(){
+            document.getElementById("display").value= document.value.toString().slice(0,-1);
+        }
+
+        // Integrate the button functions with input fields
+        let x = document.getElementById("input1");
+        let y = document.getElementById("input2");
+
+        document.getElementById("plus").addEventListener("click", function () {
+            document.getElementById("msg").innerHTML = Number(x.value) + Number(y.value);
+        })
+
+        document.getElementById("minus").addEventListener("click", function () {
+            document.getElementById("msg").innerHTML = Number(x.value) - Number(y.value);
+        })
+
+        document.getElementById("divide").addEventListener("click", function () {
+            document.getElementById("msg").innerHTML = Number(x.value) / Number(y.value);
+        })
+
+        document.getElementById("multiply").addEventListener("click", function () {
+            document.getElementById("msg").innerHTML = Number(x.value) * Number(y.value);
+        })
+    </script>
+</body>
+
+</html>
